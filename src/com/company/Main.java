@@ -12,7 +12,7 @@ public class Main {
         list.addLast(3);
         list.addLast(4);
         list.addLast(5);
-        list.removeN_K(0,3);
+        list.removeN_K(1,5);
         for(int i = 0; i<list.getSize(); i++){
             System.out.println(list.get(i));
 

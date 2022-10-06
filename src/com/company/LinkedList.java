@@ -124,13 +124,22 @@ public class LinkedList<T> {
         return tail.value;
     }
 
-    public void removeN_K(int n, int k) throws LinkedListNodeException {
-        if (n > size || k > size  || n > k) {
+    public void removeN_K(int n, int k) throws Exception {
+        LinkedListNode temp_n = getNode(n - 1);
+        LinkedListNode temp_k = getNode(k);
+        if (n > size || k > size || n >= k || k == 0) {
             throw new LinkedListNodeException("Invalid n or k!");
+        }
+        if (n == 0) {
+            head = temp_k.next;
+            size = size - k - 1;
+        } else {
+            if (k == size) {
+                size = size - (k - n) - 1;
+            } else {
+                temp_n.next = temp_k.next;
+                size = size - (k - n) - 1;
             }
-                LinkedListNode temp_n = getNode(n-1);
-                LinkedListNode temp_k = getNode(k+1);
-                temp_n.next=temp_k;
-                size=size-(k-n)-1;
         }
     }
+}
